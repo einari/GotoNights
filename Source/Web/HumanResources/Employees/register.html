@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <fieldset>
+        <div class="validation-summary alert alert-error" data-bind="validationSummaryFor:hire"></div>
+        <strong>First Name</strong>
+        <input type="text" data-bind="value: hire.firstName" />
+        <span data-bind="validationMessageFor: hire.firstName"></span>
+        <br />
+
+        <strong>Last Name</strong>
+        <input type="text" data-bind="value: hire.lastName" />
+        <span data-bind="validationMessageFor: hire.lastName"></span>
+        <br />
+
+        <strong>Social Security Number</strong>
+        <input type="text" data-bind="value: hire.socialSecurityNumber" />
+        <span data-bind="validationMessageFor: hire.socialSecurityNumber"></span>
+        <br />
+
+        <button class="btn btn-primary" data-bind="command: hire, attr: { disabled: !hire.canExecute() }">Register</button>
+    </fieldset>
+
+</body>
+</html>

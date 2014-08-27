@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <wizard width="500" height="550" completed="createWizardCompleted" onopen="createWizardOpen" title="Ny bruker" openmessage="openNewUser" closemessage="closeNewUser">
+        <wizard.steps>
+            <step view="Security/Management/UserInfo" title="Bruker informasjon"></step>
+        </wizard.steps>
+    </wizard>
+
+    <button data-bind="publishMessageOnClick: 'openNewUser'" class="btn btn-primary btn-lg active" role="button">Ny bruker</button>
+    
+    <div>
+        <h1>Brukere</h1>
+        <table class="listing">
+            <tbody data-bind="foreach: users">
+                <tr>
+                    <td data-bind="text: name" width="50%"></td>
+                    <td width="50%">
+                        <button class="btn btn-primary" data-bind="click: enableResettingPassword, visible: !isResettingPassword()">Resette passord</button>
+                        <div class="form-group" data-bind="visible: isResettingPassword()">
+                            <input type="password" class="form-control" placeholder="Passord" data-bind="value: resetPassword.newPassword" />
+                            <span class="glyphicon glyphicon-save save" data-bind="visible: !resetPassword.isBusy(), css: { disabled: !resetPassword.canExecute() }, click: function () { resetPassword.execute(); }"></span>
+                            <span class="glyphicon glyphicon-ban-circle cancel" data-bind="visible: !resetPassword.isBusy(), click: function () { resetPassword.newPassword(''); isResettingPassword(false);}"></span>
+                            <span class="spinner" data-bind="visible: resetPassword.isBusy">
+                                <img src="/Controls/Spinner/spinner-dark.png" />
+                            </span>
+                            <span data-bind="validationMessageFor: resetPassword.newPassword"></span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+       
+</body>
+</html>

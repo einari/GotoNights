@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <dialog width="400" height="280" title="Logg inn" view="Security/Authentication/Login" openmessage="showLogin" closemessage="userLoggedIn"></dialog>
+    
+    <div class="regionOuter" style="background-color: #bf3a00; padding-top: 20px; padding-bottom: 10px;">
+        <div class="container-narrow">
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+                    <!--<li><a data-bind="visible: region.userInfo.isAdmin" href="/Security/Management/Index">Security</a></li>-->
+                    <li><a data-bind="visible: region.userInfo.isAdmin" href="/Mimir?postback">Mimir</a></li>
+                    <li><a href="http://bifrost.dolittle.com">Official site</a></li>
+                    
+                    <li data-bind="visible: !region.userInfo.isLoggedIn()">
+                        <a href="#" data-bind="publishMessageOnClick: 'showLogin'">Logg inn</a>
+                    </li>
+
+                    <li class="dropdown" data-bind="visible: region.userInfo.isLoggedIn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-bind="text: region.userInfo.name"></span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-bind="click: logOut">Logg ut</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <img src="/img/bifrost.png" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

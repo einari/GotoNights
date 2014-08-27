@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div role="form">
+        <div class="form-group" data-bind="css: { 'has-error': !login.username.validator.isValid(), 'has-feedback': !login.username.validator.isValid()}">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" data-bind="value: login.username, valueUpdate: 'keyup', loginOnEnter: $data" />
+            <span data-bind="visible: !login.username.validator.isValid()" class="glyphicon glyphicon-remove form-control-feedback"></span><br />
+            <span data-bind="validationMessageFor: login.username"></span>
+        </div>
+        <div class="form-group" data-bind="css: { 'has-error': !login.password.validator.isValid(), 'has-feedback': !login.password.validator.isValid()}">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" data-bind="value: login.password, valueUpdate: 'keyup', loginOnEnter: $data" />
+            <span data-bind="visible: !login.password.validator.isValid()" class="glyphicon glyphicon-remove form-control-feedback"></span><br />
+            <span data-bind="validationMessageFor: login.password"></span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary has-spinner active" style="width:100px;" data-bind="click: performLogin, enable: login.canExecute">
+                <span class="spinner" data-bind="visible: loggingIn">
+                    <img src="/Security/Authentication/spinner.png" />
+                </span>
+                <span data-bind="visible: !loggingIn()">
+                    Logg inn
+                </span>
+            </button>
+            <button type="button" class="btn btn-default" data-bind="click: close" data-dismiss="modal">Close</button>
+        </div>
+
+        <span class="label label-danger" data-bind="visible: failedLogin">Could not log you in, check the username and/or password</span>
+    </div>
+</body>
+</html>
